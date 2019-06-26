@@ -17,7 +17,7 @@ class LoginView(View):
     def get(self,request):
         login_form=Login()
         if request.user.is_authenticated:
-            return redirect('colleges_html')
+            return redirect('todolist_html')
         return render(
             request,
             template_name='login.html',
@@ -36,7 +36,7 @@ class LoginView(View):
         )
         if user is not None:
             login(request,user)
-            return redirect('colleges_html')
+            return redirect('todolist_html')
         else:
             messages.error(request,'INVALID LOGIN CREDENTIALS')
 
@@ -68,7 +68,7 @@ class SignupView(View):
 
             if user is not None:
                 login(request,user)
-                return redirect('colleges_html')
+                return redirect('todolist_html')
 
         return render(
             request,

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{title}}</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css" rel="stylesheet" type="text/css">
+    <style>
+        h1{
+            text-align:center;
+            margin-top:3%;
+            color:green;
+            font-size:200%;
+        }
+        table{
+            margin-top:3%;
+        }
+        .add{
+            margin-left:3%;
+            margin-top:1%;
+        }
+        h2{
+            padding:1% 0% 1% 10%;
+            font-size:150%;
+            float:left;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid" style="color:white;background-color:green;">
+        <h2>Lets Do This</h2>
+        <div style="padding:1% 0% 1% 0%;margin-left:90%">
+            <a class="button" href="{% url 'logout_html' %}">Logout</a>
+        </div>
+    </div>
+    <div class="container" style="width:60%">
+        <h1>THINGS TO DO</h1>
+        <table class="table is-striped is-fullwidth">
+             <tr>
+                 <th>NAME</th>
+                 <th>DATE CREATED</th>
+                 <th>ACTION</th>
+             </tr>
+             {% for list in lists %}
+                <tr>
+                    <td>
+                         <a href="{% url 'todoitems_html' list.id%}">
+                             {{list.name}}
+                         </a>
+                    </td>
+                    <td>{{list.created_date}}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+</body>
+</html>
