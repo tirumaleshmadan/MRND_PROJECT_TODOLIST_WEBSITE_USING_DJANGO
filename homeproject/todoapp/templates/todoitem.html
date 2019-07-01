@@ -34,6 +34,7 @@
     </div>
     <div class="container" style="width:60%">
         <h1>ITEMS TO DO</h1>
+        <a class="button is-success add" href="{% url 'add_item_html' list_id %}">ADD ITEM</a>
         <table class="table is-striped is-fullwidth">
              <tr>
                  <th>DESCRIPTION</th>
@@ -47,6 +48,13 @@
                     <td>{{item.due_date}}</td>
                     <td>
                         <input type="checkbox" {% if item.completed %} checked {% endif %} disabled>
+                    </td>
+                    <td>
+                        <form id="{{item.id}}" action="{% url 'delete_item_html' list_id item.id %}" method="post">
+                            {% csrf_token %}
+                            <a href="{% url 'edit_item_html' list_id item.id %}">edit</a> |
+                            <a onclick="document.getElementById({{item.id}}).submit()">delete</a>
+                        </form>
                     </td>
                 </tr>
             {% endfor %}

@@ -15,6 +15,7 @@ class ToDoList_View(LoginRequiredMixin,View):
                 context={
                     'title':'Lets do this',
                     'items':items,
+                    'list_id':kwargs['key'],
                 }
             )
         return render(

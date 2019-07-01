@@ -34,6 +34,7 @@
     </div>
     <div class="container" style="width:60%">
         <h1>THINGS TO DO</h1>
+        <a class="button is-success add" href="{% url 'add_list_html' %}">ADD LIST</a>
         <table class="table is-striped is-fullwidth">
              <tr>
                  <th>NAME</th>
@@ -48,6 +49,13 @@
                          </a>
                     </td>
                     <td>{{list.created_date}}</td>
+                    <td>
+                        <form id="{{list.id}}" method="post" action="{% url 'delete_list_html' list.id %}">
+                            {% csrf_token %}
+                            <a href="{% url 'edit_list_html' list.id %}">edit</a> |
+                            <a onclick="document.getElementById({{list.id}}).submit()">delete</a>
+                        </form>
+                    </td>
                 </tr>
             {% endfor %}
         </table>

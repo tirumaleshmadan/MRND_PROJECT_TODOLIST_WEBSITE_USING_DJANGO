@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{title}}</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css" rel="stylesheet" type="text/css">
+    <link href="~bulma-calendar/dist/css/bulma-calendar.min.css" rel="stylesheet">
+    <style>
+        h1{
+            text-align:center;
+            margin-top:5%;
+            color:green;
+            font-size:200%;
+        }
+        .box{
+            margin-top:2%;
+            margin-bottom:2%;
+        }
+        h2{
+            padding:1% 0% 1% 10%;
+            font-size:150%;
+            float:left;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid" style="color:white;background-color:green;">
+        <h2>Lets Do This</h2>
+        <div style="padding:1% 0% 1% 0%;margin-left:90%">
+            <a class="button" href="{% url 'logout_html' %}">Logout</a>
+        </div>
+    </div>
+    <h1>ENTER Item</h1>
+    <form method="post">
+        {% csrf_token %}
+        <div class="container" style="width:40%;margin-top:2%">
+            <div class="feild">
+                <div class="control">
+                    {{item_form.description}}
+                </div>
+            </div>
+            <div class="feild">
+                <div class="control">
+                    {{item_form.due_date}}
+                </div>
+            </div>
+            <div class="feild">
+                <div class="control">
+                    COMPLETED {{item_form.completed}}
+                </div>
+            </div>
+            <center><input class="button is-success" type="submit" value="ADD ITEM" name="submit" style="margin-top:2%"></center>
+        </div>
+    </form>
+</body>
+</html>
